@@ -12,7 +12,7 @@
     "cross-env": "latest",
     "esbuild": "latest",
     "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
+    "jest-environment-jsdom": "^30.2.0",
     "nodemon": "latest",
     "rollup": "latest",
     "rollup-plugin-cleanup": "^3.2.1",

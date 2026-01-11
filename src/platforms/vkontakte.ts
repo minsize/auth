@@ -114,19 +114,10 @@ type VkontakteAuth = {
   oauthBaseUrl?: string
 }
 
-function generateVkontakteAuthUrl(
-  {
-    oauthBaseUrl = "https://oauth.vk.ru/authorize",
-    ...otherProps
-  }: VkontakteAuth = {
-    client_id: 0,
-    redirect_uri: "",
-    display: "page",
-    response_type: "code",
-    revoke: true,
-    v: 5.99,
-  },
-): URL {
+function generateVkontakteAuthUrl({
+  oauthBaseUrl = "https://oauth.vk.ru/authorize",
+  ...otherProps
+}: VkontakteAuth): URL {
   if (!otherProps.client_id) {
     throw new Error("client_id is required")
   }
@@ -137,7 +128,10 @@ function generateVkontakteAuthUrl(
 
   return generateUrl({
     origin: oauthBaseUrl,
-    searchParams: otherProps,
+    searchParams: {
+      ...{ display: "page", response_type: "code", revoke: true, v: 5.99 },
+      ...otherProps,
+    },
   })
 }
 

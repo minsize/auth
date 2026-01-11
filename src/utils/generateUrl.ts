@@ -23,7 +23,7 @@ function generateUrl({ origin, searchParams }: generateUrlProps): URL {
 }
 
 const generateSearchParam = (param: SearchParamsValues): string => {
-  if (!param) return ""
+  if (param === undefined || param === "") return ""
 
   const type = isType(param)
 

@@ -110,17 +110,10 @@ type GithubAuth = {
   code_challenge_method?: "plain" | "S256"
 }
 
-function generateGithubAuthUrl(
-  {
-    oauthBaseUrl = "https://github.com/login/oauth/authorize",
-    ...otherProps
-  }: GithubAuth = {
-    client_id: "",
-    redirect_uri: "",
-    response_type: "code",
-    allow_signup: true,
-  },
-): URL {
+function generateGithubAuthUrl({
+  oauthBaseUrl = "https://github.com/login/oauth/authorize",
+  ...otherProps
+}: GithubAuth): URL {
   if (!otherProps.client_id) {
     throw new Error("client_id is required")
   }
@@ -131,7 +124,10 @@ function generateGithubAuthUrl(
 
   return generateUrl({
     origin: oauthBaseUrl,
-    searchParams: otherProps,
+    searchParams: {
+      ...{ response_type: "code", allow_signup: true },
+      ...otherProps,
+    },
   })
 }
 

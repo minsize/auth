@@ -144,16 +144,10 @@ type YandexAuth = {
   oauthBaseUrl?: string
 }
 
-function generateYandexAuthUrl(
-  {
-    oauthBaseUrl = "https://oauth.yandex.ru/authorize",
-    ...otherProps
-  }: YandexAuth = {
-    client_id: "",
-    redirect_uri: "",
-    response_type: "code",
-  },
-): URL {
+function generateYandexAuthUrl({
+  oauthBaseUrl = "https://oauth.yandex.ru/authorize",
+  ...otherProps
+}: YandexAuth): URL {
   if (!otherProps.client_id) {
     throw new Error("client_id is required")
   }
@@ -164,7 +158,7 @@ function generateYandexAuthUrl(
 
   return generateUrl({
     origin: oauthBaseUrl,
-    searchParams: otherProps,
+    searchParams: { ...{ response_type: "code" }, ...otherProps },
   })
 }
 
