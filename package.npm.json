@@ -1,0 +1,23 @@
+{
+  "name": "@minsize/auth",
+  "version": "0.0.1",
+  "description": "generate auth platforms",
+  "license": "MIT",
+  "types": "index.ts",
+  "author": {
+    "name": "Egor Kytyukov",
+    "url": "https://t.me/xuserz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minsize/auth"
+  },
+  "dependencies": {
+    "@minsize/utils": "^0.4.2"
+  },
+  "contributors": [],
+  "keywords": [
+    "auth",
+    "oauth"
+  ]
+}
