@@ -1,4 +1,5 @@
 export { default as generateTelegramAuthUrl } from "./platforms/telegram"
 export { default as generateVkontakteAuthUrl } from "./platforms/vkontakte"
 export { default as generateGithubAuthUrl } from "./platforms/github"
+export { default as generateGitlabAuthUrl } from "./platforms/gitlab"
 export { default as generateYandexAuthUrl } from "./platforms/yandex"
